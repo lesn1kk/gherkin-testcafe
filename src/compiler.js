@@ -34,7 +34,7 @@ const getParameterTypeRegistry = () => {
 
 module.exports = class GherkinTestcafeCompiler {
   constructor(sources) {
-    this.stepFiles = sources.filter(source => source.substr(-3) === '.js');
+    this.stepFiles = sources.filter(source => source.substr(-3) === '.js' || source.substr(-3) === '.ts');
     this.specFiles = sources.filter(source => source.substr(-8) === '.feature');
 
     this.stepDefinitions = [];
@@ -230,7 +230,7 @@ module.exports = class GherkinTestcafeCompiler {
   }
 
   static getSupportedTestFileExtensions() {
-    return ['.js', '.feature'];
+    return ['.ts', '.feature'];
   }
 
   static cleanUp() {}
